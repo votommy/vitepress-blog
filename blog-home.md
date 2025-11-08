@@ -17,7 +17,7 @@ const blogposts = ref<BlogpostObj[]>([
     title: "Earthrise",
     description: "Celebrating Earth Day's 50th Anniversity",
     link: "/blogposts/2020-04-22",
-    tags: ["monologue", "science"],
+    tags: ["monologue", "space", "science"],
   },
   {
     title: "2020 Annual Net Worth Review",
