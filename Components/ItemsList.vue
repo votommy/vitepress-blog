@@ -3,6 +3,8 @@ import { computed, ref } from "vue";
 
 import Filter from "./Filter.vue";
 
+import { useRouter, withBase } from "vitepress";
+
 export type BlogpostObj = {
   title: string;
   description: string;
@@ -14,6 +16,7 @@ type Props = {
 };
 
 const { blogposts } = defineProps<Props>();
+const router = useRouter();
 
 const sortDir = ref<"asc" | "desc">("asc");
 const filter = ref<string>();
@@ -76,7 +79,7 @@ function getDateFromFileName(fileName: string) {
 }
 
 function goToLink(path: string) {
-  window.location.href = path;
+  router.go(withBase(path));
 }
 function toggleSort() {
   sortDir.value = sortDir.value === "asc" ? "desc" : "asc";
