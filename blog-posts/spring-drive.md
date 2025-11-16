@@ -84,7 +84,6 @@ aside: false
 
 <span class="tags">
     <span class="tagPills">horology</span>
-    <span class="tagPills">engineering</span>
     <span class="tagPills">monologue</span>
 </span>
 

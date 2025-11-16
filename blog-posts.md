@@ -18,7 +18,7 @@ const blogPosts = ref<BlogPostObj[]>([
     description: "Celebrating Earth Day's 50th Anniversity",
     date: "2020-04-22",
     link: "/blog-posts/earthrise",
-    tags: ["monologue", "space", "science"],
+    tags: ["monologue", "space"],
   },
   {
     title: "2020 Annual Net Worth Review",
@@ -46,7 +46,7 @@ const blogPosts = ref<BlogPostObj[]>([
     description: "The Over-Engineering of the Grand Seiko Spring Drive",
     date: "2023-04-24",
     link: "/blog-posts/spring-drive",
-    tags: ["horology", "engineering", "monologue"],
+    tags: ["horology", "monologue"],
   },
   {
     title: "2023 Annual Net Worth Review",

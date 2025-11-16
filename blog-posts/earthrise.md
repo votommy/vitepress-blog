@@ -22,7 +22,6 @@ aside: false
 <span class="tags">
     <span class="tagPills">monologue</span>
     <span class="tagPills">space</span>
-    <span class="tagPills">science</span>
 </span>
 
 <style scoped>
