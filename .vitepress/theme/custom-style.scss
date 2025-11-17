@@ -1,3 +1,17 @@
+@font-face {
+    font-family: "TommySans";
+    src: url("./fonts/TommySans.woff") format('woff');
+}
+@font-face {
+    font-family: "TommySans";
+    src: url("./fonts/TommySansBold.woff") format('woff');
+    font-weight: bold;
+}
+
+html, body {
+    font-family: "TommySans";
+}
+
 @media (max-width: 701px) {
   html, body {
     font-size: 14px;
