@@ -20,16 +20,12 @@ function parseTable() {
 }
 function generateHtmlTable(data: string[][]) {
   const categories = [
-    { header: "Investments", backgroundColor: "#C6EFCD", fontColor: "#0B5001" },
-    { header: "Liquid", backgroundColor: "#FFE98B", fontColor: "#894401" },
-    { header: "Assets", backgroundColor: "#FEC188", fontColor: "#B74510" },
-    { header: "Debt", backgroundColor: "#FDB9C3", fontColor: "#89000A" },
-    { header: "Net Worth", backgroundColor: "#A6B9E1", fontColor: "#253660" },
-    {
-      header: "Credit Score",
-      backgroundColor: "#F1CEFE",
-      fontColor: "#763DA4",
-    },
+    "Investments",
+    "Liquid",
+    "Assets",
+    "Debt",
+    "Net Worth",
+    "Credit Score",
   ];
 
   tableEl.value =
@@ -39,13 +35,13 @@ function generateHtmlTable(data: string[][]) {
         const tag = i === 0 ? "th" : "td";
 
         // Style the category headers
-        let rowCss = "";
-        if (categories.map((category) => category.header).includes(row[0])) {
-          const currCategory = categories.find((c) => c.header === row[0]);
-          rowCss = `style="background-color: ${currCategory?.backgroundColor}; color: ${currCategory?.fontColor}; font-weight: bold;"`;
+        let rowClass = "";
+        if (categories.includes(row[0])) {
+          const currCategory = categories.find((c) => c === row[0]);
+          rowClass = `class="${currCategory?.replace(" ", "_")}-row"`;
         }
 
-        return `  <tr ${rowCss}>${row
+        return `  <tr ${rowClass}>${row
           .map((cell) => {
             return `<${tag}>${cell}</${tag}>`;
           })
@@ -67,6 +63,12 @@ onBeforeMount(() => {
 
 <style lang="scss">
 #table-element {
+  table {
+    border-collapse: separate;
+    border-spacing: 0;
+    width: 100%;
+  }
+
   // Disable striped rows
   tr:nth-child(2n) {
     background-color: transparent;
@@ -80,9 +82,67 @@ onBeforeMount(() => {
     min-width: 100px;
     padding: 0 1rem;
   }
-  // Categories column
+
+  th,
+  td {
+    border-left-width: 0;
+  }
+
+  // First column sticky
+  td:first-child,
   th:first-child {
+    position: sticky;
+    left: 0;
+    background-color: var(--vp-c-bg);
+    z-index: 2;
     min-width: 200px;
+    border-left-width: 1px;
+
+    // right-shadow
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      right: -6px;
+      width: 6px;
+      height: 100%;
+      background: linear-gradient(to right, var(--vp-c-divider), transparent);
+      pointer-events: none; /* Prevent blocking clicks */
+    }
+  }
+  // Style the categories
+  th:first-child {
+    background-color: var(--vp-c-bg-soft);
+  }
+  .Investments-row > td {
+    background-color: #c6efcd;
+    color: #0b5001;
+    font-weight: bold;
+  }
+  .Liquid-row > td {
+    background-color: #ffe98b;
+    color: #894401;
+    font-weight: bold;
+  }
+  .Assets-row > td {
+    background-color: #fec188;
+    color: #b74510;
+    font-weight: bold;
+  }
+  .Debt-row > td {
+    background-color: #fdb9c3;
+    color: #89000a;
+    font-weight: bold;
+  }
+  .Net_Worth-row > td {
+    background-color: #a6b9e1;
+    color: #253660;
+    font-weight: bold;
+  }
+  .Credit_Score-row > td {
+    background-color: #f1cefe;
+    color: #763da4;
+    font-weight: bold;
   }
 
   // Cells
